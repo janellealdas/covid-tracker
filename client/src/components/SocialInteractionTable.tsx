@@ -1,68 +1,68 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import MaterialTable, { Column } from 'material-table';
-import { Link } from 'react-router-dom';
-import { FormControlLabel, Checkbox, Typography } from '@material-ui/core';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { SocialInteraction } from '../models/SocialInteraction';
-import { useData } from '../hooks/useData';
-import * as SocialInteractionActions from '../redux/actions/SocialInteractionActions';
-import '../components/Dashboard.css';
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import MaterialTable, { Column } from "material-table";
+import { Link } from "react-router-dom";
+import { FormControlLabel, Checkbox, Typography } from "@material-ui/core";
+import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { SocialInteraction } from "../models/SocialInteraction";
+import { useData } from "../hooks/useData";
+import * as SocialInteractionActions from "../redux/actions/SocialInteractionActions";
+import "../components/Dashboard.css";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     title: {
-      fontSize: '20px',
+      fontSize: "20px",
     },
     label: {
-      fontSize: '12px',
+      fontSize: "12px",
     },
     checkbox: {
-      marginLeft: '1000px',
+      marginLeft: "1000px",
     },
   })
 );
 
 const columnHeaders: Array<Column<SocialInteraction>> = [
   {
-    title: 'Id',
-    field: 'id',
+    title: "Id",
+    field: "id",
     hidden: true,
     cellStyle: {
-      textAlign: 'center',
+      textAlign: "center",
     },
   },
   {
-    title: 'Name',
-    field: 'name',
+    title: "Name",
+    field: "name",
     cellStyle: {
-      textAlign: 'center',
+      textAlign: "center",
     },
-    validate: (rowData) => rowData.name !== '',
+    validate: (rowData: any) => rowData.name !== "",
   },
   {
-    title: 'Date',
-    field: 'date',
-    type: 'date',
+    title: "Date",
+    field: "date",
+    type: "date",
     cellStyle: {
-      textAlign: 'center',
+      textAlign: "center",
     },
-    validate: (rowData) => rowData.date !== null,
+    validate: (rowData: any) => rowData.date !== null,
   },
   {
-    title: 'Hours',
-    field: 'hours',
+    title: "Hours",
+    field: "hours",
     cellStyle: {
-      textAlign: 'center',
+      textAlign: "center",
     },
-    validate: (rowData) => rowData.hours > 0,
+    validate: (rowData: any) => rowData.hours > 0,
   },
   {
-    title: 'Is Social Distancing Observed?',
-    field: 'isSocialDistancing',
-    type: 'boolean',
+    title: "Is Social Distancing Observed?",
+    field: "isSocialDistancing",
+    type: "boolean",
     cellStyle: {
-      textAlign: 'center',
+      textAlign: "center",
     },
   },
 ];
@@ -119,8 +119,8 @@ const SocialInteractionsList: React.FC = () => {
 
   return (
     <div>
-      <div className='link-dashboard'>
-        <Link to='/home'>Back to Dashboard</Link>
+      <div className="link-dashboard">
+        <Link to="/home">Back to Dashboard</Link>
       </div>
       <FormControlLabel
         classes={{
@@ -133,15 +133,15 @@ const SocialInteractionsList: React.FC = () => {
             }}
             checked={showLast14Days}
             onChange={handleCheckBoxChange}
-            name='checkedB'
-            color='primary'
+            name="checkedB"
+            color="primary"
           />
         }
-        label='Display records within last 14 days'
+        label="Display records within last 14 days"
       />
       <MaterialTable
         title={
-          <Typography variant='h6' className={classes.title}>
+          <Typography variant="h6" className={classes.title}>
             Social Interaction List
           </Typography>
         }
@@ -149,39 +149,39 @@ const SocialInteractionsList: React.FC = () => {
         columns={columnHeaders}
         data={showLast14Days ? socialInteractionFor14days : socialInteraction}
         editable={{
-          onRowAdd: (newData) =>
+          onRowAdd: (newData: any) =>
             new Promise((resolve) => {
               setTimeout(() => {
                 resolve(null);
                 handleAddSocialInteraction(newData);
               }, 600);
             }),
-          onRowUpdate: (newData, oldData) =>
+          onRowUpdate: (newData: any, oldData: any) =>
             new Promise((resolve) => {
               resolve(null);
               handleUpdateSocialInteraction(newData);
             }),
-          onRowDelete: (oldData) =>
+          onRowDelete: (oldData: any) =>
             new Promise((resolve) => {
               resolve(null);
               handleDeleteSocialInteraction(oldData);
             }),
         }}
         options={{
-          rowStyle: (rowData) => {
+          rowStyle: (rowData: any) => {
             if (!rowData.isSocialDistancing) {
-              return { backgroundColor: '#fccfcc' };
+              return { backgroundColor: "#fccfcc" };
             }
-            return { textAlign: 'center' };
+            return { textAlign: "center" };
           },
           headerStyle: {
-            backgroundColor: '#a7cef2',
-            color: '#000',
-            fontSize: '15px',
-            textAlign: 'center',
+            backgroundColor: "#a7cef2",
+            color: "#000",
+            fontSize: "15px",
+            textAlign: "center",
           },
           searchFieldStyle: {
-            fontSize: '13px',
+            fontSize: "13px",
           },
         }}
       />

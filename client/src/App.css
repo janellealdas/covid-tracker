@@ -11,6 +11,7 @@
   overflow-x: hidden;
   display: flex;
   padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 .App-link {
