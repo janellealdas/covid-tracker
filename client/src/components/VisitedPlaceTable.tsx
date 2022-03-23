@@ -1,68 +1,68 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import MaterialTable, { Column } from 'material-table';
-import { Link } from 'react-router-dom';
-import { FormControlLabel, Checkbox, Typography } from '@material-ui/core';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { VisitedPlace } from '../models/VisitedPlace';
-import { useData } from '../hooks/useData';
-import * as VisitedPlaceActions from '../redux/actions/VisitedPlaceActions';
-import '../components/Dashboard.css';
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import MaterialTable, { Column } from "material-table";
+import { Link } from "react-router-dom";
+import { FormControlLabel, Checkbox, Typography } from "@material-ui/core";
+import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { VisitedPlace } from "../models/VisitedPlace";
+import { useData } from "../hooks/useData";
+import * as VisitedPlaceActions from "../redux/actions/VisitedPlaceActions";
+import "../components/Dashboard.css";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     title: {
-      fontSize: '20px',
+      fontSize: "20px",
     },
     label: {
-      fontSize: '12px',
+      fontSize: "12px",
     },
     checkbox: {
-      marginLeft: '1000px',
+      marginLeft: "1000px",
     },
   })
 );
 
 const columnHeaders: Array<Column<VisitedPlace>> = [
   {
-    title: 'Id',
-    field: 'id',
+    title: "Id",
+    field: "id",
     hidden: true,
     cellStyle: {
-      textAlign: 'center',
+      textAlign: "center",
     },
   },
   {
-    title: 'Place',
-    field: 'place',
+    title: "Place",
+    field: "place",
     cellStyle: {
-      textAlign: 'center',
+      textAlign: "center",
     },
-    validate: (rowData) => rowData.place !== '',
+    validate: (rowData) => rowData.place !== "",
   },
   {
-    title: 'Date',
-    field: 'date',
-    type: 'date',
+    title: "Date",
+    field: "date",
+    type: "date",
     cellStyle: {
-      textAlign: 'center',
+      textAlign: "center",
     },
     validate: (rowData) => rowData.date !== null,
   },
   {
-    title: 'Hours',
-    field: 'hours',
+    title: "Hours",
+    field: "hours",
     cellStyle: {
-      textAlign: 'center',
+      textAlign: "center",
     },
     validate: (rowData) => rowData.hours >= 1,
   },
   {
-    title: 'Is Visited Place Crowded?',
-    field: 'isCrowded',
-    type: 'boolean',
+    title: "Is Visited Place Crowded?",
+    field: "isCrowded",
+    type: "boolean",
     cellStyle: {
-      textAlign: 'center',
+      textAlign: "center",
     },
   },
 ];
@@ -109,8 +109,8 @@ const VisitedPlacesList: React.FC = () => {
 
   return (
     <div>
-      <div className='link-dashboard'>
-        <Link to='/home'>Back to Dashboard</Link>
+      <div className="link-dashboard">
+        <Link to="/home">Back to Dashboard</Link>
       </div>
       <FormControlLabel
         classes={{
@@ -123,15 +123,15 @@ const VisitedPlacesList: React.FC = () => {
             }}
             checked={showLast14Days}
             onChange={handleCheckBoxChange}
-            name='checkedB'
-            color='primary'
+            name="checkedB"
+            color="primary"
           />
         }
-        label='Display records within last 14 days'
+        label="Display records within last 14 days"
       />
       <MaterialTable
         title={
-          <Typography variant='h6' className={classes.title}>
+          <Typography variant="h6" className={classes.title}>
             Visited Place List
           </Typography>
         }
@@ -160,18 +160,18 @@ const VisitedPlacesList: React.FC = () => {
         options={{
           rowStyle: (rowData) => {
             if (rowData.isCrowded) {
-              return { backgroundColor: '#fccfcc' };
+              return { backgroundColor: "#fccfcc" };
             }
-            return { textAlign: 'center' };
+            return { textAlign: "center" };
           },
           headerStyle: {
-            backgroundColor: '#a7cef2',
-            color: '#000',
-            fontSize: '15px',
-            textAlign: 'center',
+            backgroundColor: "#a7cef2",
+            color: "#000",
+            fontSize: "15px",
+            textAlign: "center",
           },
           searchFieldStyle: {
-            fontSize: '13px',
+            fontSize: "13px",
           },
         }}
       />
