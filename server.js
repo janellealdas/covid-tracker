@@ -20,6 +20,7 @@ app.use(
   require("./routes/api/social-interactions")
 );
 
+//for api and client to run on same server
 module.exports = function (app) {
   // add other server routes to path array
   app.use(proxy(["/api"], { target: "http://localhost:5000" }));
