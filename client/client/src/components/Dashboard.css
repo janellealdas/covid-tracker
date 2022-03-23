@@ -1,0 +1,68 @@
+.card {
+  padding: 10px;
+  margin: 5px;
+}
+
+.card-text {
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.card-button {
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog-text {
+  font-size: 20px;
+}
+
+/* .dialog-content {
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  margin: 15px;
+} */
+
+.row {
+  justify-content: right;
+  text-align: right;
+  margin-right: 30px;
+  margin-bottom: -30px;
+}
+
+.MuiCardActions-root {
+  justify-content: center;
+}
+
+.addmodal {
+  font-size: 1.75em;
+}
+
+.link-dashboard {
+  justify-content: left;
+  text-align: left;
+  margin-left: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.contents {
+  margin: 10px;
+  color: black;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.links {
+  margin: 10px;
+  color: black;
+  font-size: 20px;
+  text-decoration-line: underline;
+  text-align: center !important;
+  display: block;
+}
