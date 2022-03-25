@@ -8,8 +8,8 @@ import App from "./App";
 // import reportWebVitals from './reportWebVitals';
 import Store from "./redux/Store";
 
-axios.defaults.baseURL = "http://localhost:5000";
-// axios.defaults.baseURL = "https://react-express-covid-app.herokuapp.com";
+// axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "https://react-express-covid-app.herokuapp.com";
 
 ReactDOM.render(
   <Provider store={Store}>
